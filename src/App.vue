@@ -1,29 +1,25 @@
 <template>
   <div id="app">
     <img src="./assets/logo.png">
-    <div>TEST</div>
-    <HelloWorld/>
+    <home/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld'
+import Home from './components/pages/Home';
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    Home
   }
 }
 </script>
 
-<style>
+<style lang="scss">
+@import './sass/index.scss';
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  color: $primary;
 }
 </style>
