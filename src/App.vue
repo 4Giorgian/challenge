@@ -1,6 +1,5 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
     <home/>
   </div>
 </template>
@@ -21,5 +20,6 @@ export default {
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   color: $primary;
+  padding-top: 50px;
 }
 </style>
