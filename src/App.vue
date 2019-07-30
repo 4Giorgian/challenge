@@ -17,9 +17,9 @@ export default {
 
 <style lang="scss">
 @import './sass/index.scss';
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family:'Roboto', sans-serif;
   color: $primary;
-  padding-top: 50px;
 }
 </style>

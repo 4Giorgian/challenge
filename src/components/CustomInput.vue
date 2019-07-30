@@ -40,7 +40,6 @@ input {
   border-radius: 8px;
   box-sizing: border-box;
   height: 50px;
-  max-width: 345px;
   padding-left: 15px; 
   width: 100%;
   font-size: 20px;

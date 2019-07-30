@@ -1,17 +1,18 @@
 <template>
-  <div>
-    FORM
-    <ul class="steps is-horizontal">
-      <li :class="[currentStep === 1 ? 'is-active' : '', 'steps-segment']">
-        <span class="steps-marker">1</span>
-      </li>
-      <li :class="[currentStep === 2 ? 'is-active' : '', 'steps-segment']">
-          <span class="steps-marker">2</span>
-      </li>
-      <li :class="[currentStep === 3 ? 'is-active' : '', 'steps-segment']">
-          <span class="steps-marker">3</span>
-      </li>
-    </ul>
+  <div class="formWrapper">
+    <div class="wizardWrapper">
+      <ul class="steps is-horizontal my-step-style">
+        <li :class="[currentStep === 1 ? 'is-active' : '', 'steps-segment']">
+          <span class="steps-marker">1</span>
+        </li>
+        <li :class="[currentStep === 2 ? 'is-active' : '', 'steps-segment']">
+            <span class="steps-marker">2</span>
+        </li>
+        <li :class="[currentStep === 3 ? 'is-active' : '', 'steps-segment']">
+            <span class="steps-marker">3</span>
+        </li>
+      </ul>
+    </div>
     <div v-show="currentStep === 1" >
       <div class="inputWrapper">
         <custom-input
@@ -66,8 +67,25 @@
     </div>
     <div v-show="currentStep === 3" >
       <div class="inputWrapper">
-        <input
+        <label class="label" >Fecha de Nacimiento</label>
+        <datepicker
+          input-class="datepicker"
+          v-model="date" name="date"
+          v-validate="'required'"
+          placeholder="fecha de nacimiento"
+        ></datepicker>
+        <span>{{ errors.first('date') }}</span>
+      </div>
+      <div class="inputWrapper">
+        <custom-input
+          name="email"
+          label="Correo Electrónico"
           type="text"
+          placeholder="challenge@test.com"
+          maxlength=100
+          v-model="email"
+          v-validate="'required|email'"
+          :error="errors.first('email')"
         />
       </div>
     </div>
@@ -75,12 +93,17 @@
       <button v-if="currentStep != 1"  
         @click="backStep"
         class="button buttonStyle"
-      >regresar
+      >REGRESAR
       </button>
       <button v-if="currentStep != 3"
         @click="nextStep"
         class="button buttonStyle"
-      >siguiente
+      >SIGUIENTE
+      </button>
+      <button v-if="currentStep === 3"
+        @click="submit"
+        class="button buttonStyle"
+      >ENVIAR
       </button>
     </div>
   </div>
@@ -88,10 +111,12 @@
 <script>
 import CustomInput from './CustomInput';
 import { mapFields } from 'vee-validate';
+import Datepicker from 'vuejs-datepicker';
 
 export default {
   components:{
     CustomInput,
+    Datepicker
   },
   name:'Form',
     data(){
@@ -101,7 +126,10 @@ export default {
         lastname:"",
         email:"",
         phone:null,
-        address:"",             
+        address:"",
+        date: null,
+        email:"",
+        success: false,             
       };              
     },
     computed:{
@@ -110,7 +138,10 @@ export default {
       },
       secondStepIsValid(){
         return this.fields.phone.valid && this.fields.address.valid;
-      }
+      },
+      thirdStepIsValid(){
+        return this.fields.email.valid;
+      },
     },
     methods: {
       nextStep(){
@@ -122,24 +153,61 @@ export default {
         }
       },
       backStep(){   
-          this.currentStep--;
-      }        
+        this.currentStep--;
+      },
+      submit(){
+        if(this.thirdStepIsValid){
+          this.success = true;
+        }
+
+      }       
     }       
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss" >
 @import '../sass/index.scss';
-
+.formWrapper{
+  margin-bottom: 105px;
+}
+.wizardWrapper{
+  padding: 0 25px;
+  margin-bottom: 20px;
+}
 .buttonStyle{
   color: $primary;
 }
 .inputWrapper {
   margin: 25px;
 }
+.buttonStyle{
+  border-radius: 34px;
+  height: 40px;
+  color: white;
+  background-color: #FF6D46;
+  min-width: 120px ;
+  font-size: 15px;
+}
 .buttonsWrapper{
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
+}
+.datepicker{
+  border: 1px solid #D2D2D2;
+  border-radius: 8px;
+  box-sizing: border-box;
+  height: 50px;
+  padding-left: 15px; 
+  width: 100%;
+  font-size: 20px;
+  &::placeholder{
+      color: $ligth-grey;
+    } 
+}
+.label{
+  color: $grey; 
+  font-weight: 100;
+  font-size: 20px;
 }
 </style>
 
