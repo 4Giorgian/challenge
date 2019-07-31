@@ -169,24 +169,34 @@ export default {
 @import '../sass/index.scss';
 .formWrapper{
   margin-bottom: 105px;
+  max-width: 600px;
+  margin: 0 auto;
 }
 .wizardWrapper{
   padding: 0 25px;
   margin-bottom: 20px;
 }
-.buttonStyle{
-  color: $primary;
-}
 .inputWrapper {
   margin: 25px;
 }
 .buttonStyle{
-  border-radius: 34px;
+  font-size: 13px;
+  border: 1px solid #ff6d46;
+  color: #ff6d46;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all .25s;
+  background-color: white;
   height: 40px;
-  color: white;
-  background-color: #FF6D46;
   min-width: 120px ;
-  font-size: 15px;
+
+  &:hover{
+    border-radius: 34px;
+    height: 40px;
+    color: white !important;
+    background-color: #FF6D46 !important;
+    min-width: 120px ;
+    }
 }
 .buttonsWrapper{
   display: flex;

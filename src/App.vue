@@ -20,6 +20,5 @@ export default {
 @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
 #app {
   font-family:'Roboto', sans-serif;
-  color: $primary;
 }
 </style>
