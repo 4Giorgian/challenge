@@ -10,7 +10,7 @@
         @input="$emit('input', $event.target.value)"
         :v-validate="validations"
       />
-      <span>{{error}}</span>
+      <span class="error">{{error}}</span>
     </div>
 </template>
 <script>
@@ -43,8 +43,16 @@ input {
   padding-left: 15px; 
   width: 100%;
   font-size: 20px;
+  outline: none;
   &::placeholder{
       color: $ligth-grey;
-    } 
+    }
+  &:focus{
+    border: 1px solid $primary;
+    border-radius: 8px;
+  }
+}
+.error{
+  color: red;
 }
 </style>

@@ -46,9 +46,9 @@
           label="Celular"
           type="text"
           placeholder="+51"
-          maxlength=11
+          maxlength=9
           v-model="phone"
-          v-validate="'required|digits:11'"
+          v-validate="'required|digits:9'"
           :error="errors.first('phone')"
         />
       </div>
@@ -60,7 +60,7 @@
           placeholder="Jr.."
           maxlength=60
           v-model="address"
-          v-validate="'required|alpha_num'"
+          v-validate="'required'"
           :error="errors.first('address')"
         />
       </div>
@@ -89,6 +89,8 @@
         />
       </div>
     </div>
+    <span class="errorStep" v-show="errorStep" >rellena los campos correctamente</span>
+    <span class="successForm" v-show="sendForm" >Enviado!</span>
     <div class="buttonsWrapper">
       <button v-if="currentStep != 1"  
         @click="backStep"
@@ -129,8 +131,27 @@ export default {
         address:"",
         date: null,
         email:"",
-        success: false,             
+        sendForm: false,
+        errorStep: false,             
       };              
+    },
+    mounted(){
+      //const fields = ['name', 'lastame', 'phone', 'address', 'date', 'email'];
+      //fields.forEach(field =>{
+        localStorage.getItem('currentStep') ?
+        this.currentStep =  parseInt(localStorage.getItem('currentStep')): this.currentStep = 1;
+        if(this.currentStep === 2 ){
+          localStorage.getItem('name') ? this.name = localStorage.getItem('name') : this.name = "";
+          localStorage.getItem('lastname') ? this.lastname = localStorage.getItem('lastname') : this.lastname = ""; 
+        }
+
+        if(this.currentStep === 3 ){
+          localStorage.getItem('name') ? this.name = localStorage.getItem('name') : this.name = "";
+          localStorage.getItem('lastname') ? this.lastname = localStorage.getItem('lastname') : this.lastname = "";
+          localStorage.getItem('phone') ? this.phone = localStorage.getItem('phone') : this.phone = "";
+          localStorage.getItem('address') ? this.address = localStorage.getItem('address') : this.address = "";
+        }
+     // })
     },
     computed:{
       firstStepIsValid(){
@@ -146,18 +167,41 @@ export default {
     methods: {
       nextStep(){
         if(this.currentStep === 1 && this.firstStepIsValid){
-          return this.currentStep = 2;
+          this.errorStep = false;
+          this.currentStep = 2;
+          return this.setStoragefirstStep();
+        }else if(this.currentStep === 1){
+          return this.errorStep = true;
         }
         if(this.currentStep === 2 && this.secondStepIsValid){
-          return this.currentStep = 3;
+          this.errorStep = false;
+          this.currentStep = 3;
+          return this.setStorageSecondStep();
+        }else if(this.currentStep === 2){
+          return this.errorStep = true;
         }
       },
-      backStep(){   
+      backStep(){
+        this.errorStep = false;
         this.currentStep--;
       },
+      setStoragefirstStep(){
+        localStorage.setItem('currentStep', this.currentStep);
+        localStorage.setItem('name', this.name);
+        localStorage.setItem('lastname', this.lastname);
+      },
+      setStorageSecondStep(){
+        localStorage.setItem('currentStep', this.currentStep);
+        localStorage.setItem('phone', this.phone);
+        localStorage.setItem('address', this.address);
+      },
       submit(){
-        if(this.thirdStepIsValid){
-          this.success = true;
+        if(this.thirdStepIsValid && this.date){
+          this.errorStep = false;
+          this.sendForm = true;
+          localStorage.clear();
+        }else{
+          this.errorStep = true;
         }
 
       }       
@@ -198,6 +242,12 @@ export default {
     min-width: 120px ;
     }
 }
+.errorStep{
+  color: red;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
 .buttonsWrapper{
   display: flex;
   justify-content: space-around;
@@ -218,6 +268,14 @@ export default {
   color: $grey; 
   font-weight: 100;
   font-size: 20px;
+}
+.successForm{
+  color: $primary;
+  display: flex;
+  justify-content: center;
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
 }
 </style>
 

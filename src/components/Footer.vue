@@ -1,25 +1,27 @@
 <template>
   <div class="footerWrapper">
-      <img src="../assets/logo-footer.png" alt="logo la positiva">
-      <div class="address">
-        <span class="title">Oficina Principal</span>
-        <span class="addressDescription">Calle Francisco Masías 370</span>
-        <span class="addressDescription">San Isidro, Lima 27</span>
-      </div>
-      <div class="social">
-        <span class="title">Síguenos</span>
-        <div class="socialLogos">
-          <a href="#">
-            <img class="imgLogo" src="../assets/facebook-logo.png" alt="facebook-logo">
-          </a>
-          <a href="#">
-            <img class="imgLogo" src="../assets/twitter.png" alt="twitter-logo">
-          </a>
-          <a href="#">
-            <img class="imgLogo" src="../assets/youtube.png" alt="yotube-logo">
-          </a>
+    <div class="content">
+      <img src="../assets/logo-white.png" alt="logo la positiva">
+        <div class="address">
+          <span class="title">Oficina Principal</span>
+          <span class="addressDescription">Calle Francisco Masías 370</span>
+          <span class="addressDescription">San Isidro, Lima 27</span>
         </div>
-      </div>
+        <div class="social">
+          <span class="title">Síguenos</span>
+          <div class="socialLogos">
+            <a href="https://www.facebook.com/LaPositivaSeguros/?ref=br_rs">
+              <img class="imgLogo" src="../assets/facebook-logo.png" alt="facebook-logo">
+            </a>
+            <a href="https://twitter.com/lapositiva_peru?lang=es">
+              <img class="imgLogo" src="../assets/twitter.png" alt="twitter-logo">
+            </a>
+            <a href="https://www.youtube.com/user/LaPositivaPeru">
+              <img class="imgLogo" src="../assets/youtube.png" alt="yotube-logo">
+            </a>
+          </div>
+        </div>
+    </div>
   </div>
 </template>
 
@@ -33,8 +35,19 @@ export default {
 @import '../sass/index.scss';
 
 .footerWrapper{
-  padding: 30px 40px;
   background-color: $primary;
+  padding: 30px 40px;
+}
+.content{
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  max-width: 600px;
+  @include since-tablet{
+    flex-direction: row;
+    justify-content: space-between;
+  }
 }
 .address{
   color: $white;

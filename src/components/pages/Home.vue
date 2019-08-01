@@ -60,17 +60,17 @@ export default {
   padding-top: 20px;
 }
 .logoWrapper{
+  background-color: white;
   display: flex;
+  height: 70px;
   justify-content: center;
+  padding-bottom: 10px;
   padding-top: 10px;
   position: fixed;
-  z-index: 100;
-  width: 100%;
-  background-color: white;
   top: 0;
-  padding-bottom: 10px;
+  width: 100%;
+  z-index: 100;
   @include since-tablet{
-    height: 110px;
     align-items: center;
   }
 }
