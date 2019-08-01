@@ -15,7 +15,8 @@ const dictionary = {
       email: 'email no válido',
       required: 'este campo es requerido',
       alpha: 'solo se pueden escribir letras',
-      digits: 'este campo debe ser numérico y debe contener maximo 9 digitos'
+      digits: 'este campo debe ser numérico y debe contener maximo 9 digitos',
+      alpha_spaces: 'en este campo solo se pueden escribir letras',
     }
   },
 };

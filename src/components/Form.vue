@@ -22,7 +22,7 @@
           placeholder="Nombres"
           maxlength=30
           v-model="name"
-          v-validate="'required|alpha'"
+          v-validate="'required|alpha_spaces'"
           :error="errors.first('name')"
         />
       </div>
@@ -34,7 +34,7 @@
           placeholder="Apellidos"
           maxlength=30
           v-model="lastname"
-          v-validate="'required|alpha'"
+          v-validate="'required|alpha_spaces'"
           :error="errors.first('lastname')"
         />
       </div>
@@ -45,7 +45,7 @@
           name="phone"
           label="Celular"
           type="text"
-          placeholder="+51"
+          placeholder="987654321"
           maxlength=9
           v-model="phone"
           v-validate="'required|digits:9'"
@@ -57,7 +57,7 @@
           name="address"
           label="Dirección"
           type="text"
-          placeholder="Jr.."
+          placeholder="Calle Francisco "
           maxlength=60
           v-model="address"
           v-validate="'required'"
@@ -70,7 +70,8 @@
         <label class="label" >Fecha de Nacimiento</label>
         <datepicker
           input-class="datepicker"
-          v-model="date" name="date"
+          v-model="date"
+          name="date"
           v-validate="'required'"
           placeholder="fecha de nacimiento"
         ></datepicker>

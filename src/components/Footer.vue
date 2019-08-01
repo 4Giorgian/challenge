@@ -1,7 +1,7 @@
 <template>
   <div class="footerWrapper">
     <div class="content">
-      <img src="https://dmarquina-statics.s3.amazonaws.com/logo-white.fd7f710.png" alt="logo la positiva">
+      <img class="logo" src="https://dmarquina-statics.s3.amazonaws.com/logo-white.fd7f710.png" alt="logo la positiva">
         <div class="address">
           <span class="title">Oficina Principal</span>
           <span class="addressDescription">Calle Francisco Masías 370</span>
@@ -34,6 +34,9 @@ export default {
 <style lang="scss" scoped>
 @import '../sass/index.scss';
 
+.logo{
+  margin-bottom: 20px;
+}
 .footerWrapper{
   background-color: $primary;
   padding: 30px 40px;
@@ -58,11 +61,12 @@ export default {
 .title{
   color: $white;
   font-size: 18px;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 }
 .addressDescription{
   font-size: 15px;
-  font-weight: 100
+  font-weight: 100;
+  margin-bottom: 10px;
 }
 .imgLogo{
   margin-right: 10px;
