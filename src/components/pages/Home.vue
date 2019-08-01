@@ -2,11 +2,11 @@
   <div class="homeWrapper">
     <div class="logoWrapper">
       <a href="https://www.lapositiva.com.pe/wps/portal/corporativo/home">
-        <img class="logo" src="../../assets/logo.png" alt="logo-positiva">
+        <img class="logo" src="https://dmarquina-statics.s3.amazonaws.com/logo.eb3abc1.png" alt="logo-positiva">
       </a>
     </div>
     <div class="bannerWrapper">
-      <img class="banner" src="../../assets/banner.jpg"/>
+      <img class="banner" src="https://dmarquina-statics.s3.amazonaws.com/banner.e1f829c.jpg"/>
     </div>
     <div class="textWrapper">
       <p class="title-text">Déjanos tus datos.¡Nos pondremos en contacto contigo!</p>

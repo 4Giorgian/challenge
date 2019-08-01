@@ -1,7 +1,7 @@
 <template>
   <div class="footerWrapper">
     <div class="content">
-      <img src="../assets/logo-white.png" alt="logo la positiva">
+      <img src="https://dmarquina-statics.s3.amazonaws.com/logo-white.fd7f710.png" alt="logo la positiva">
         <div class="address">
           <span class="title">Oficina Principal</span>
           <span class="addressDescription">Calle Francisco Masías 370</span>
