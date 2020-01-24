@@ -106,7 +106,7 @@
       <button v-if="currentStep === 3"
         @click="submit"
         class="button buttonStyle"
-      >ENVIAR
+      >ENVIARR
       </button>
     </div>
   </div>
